@@ -11,12 +11,15 @@ import com.adidas.services.master.properties.AdidasLocales;
 import com.adidas.services.master.properties.ReebokLocales;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.support.GenericMessage;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -129,11 +132,19 @@ public class OperationServiceImpl implements OperationService {
                 .setId(dto.getUuid())
                 .setFlow(dto.getFlow().name())
                 .setConsumer(dto.getMigrationType().name())
-                .setLocale(Arrays.stream(dto.getLocale().split(","))
-                        .map(s -> s.replaceAll("[\\[\\]]", StringUtils.EMPTY))
-                        .map(s -> s.replaceAll("\"", StringUtils.EMPTY))
-                        .collect(Collectors.toList()))
+                .setLocale(getLocale(dto))
                 .build();
 
+    }
+
+    private List<String> getLocale(WorkerStarterDto dto) {
+        final List<String> collect = new ArrayList<>();
+                if (!StringUtils.isBlank(dto.getLocale())) {
+                   return Arrays.stream(dto.getLocale().split(","))
+                            .map(s -> s.replaceAll("[\\[\\]]", StringUtils.EMPTY))
+                            .map(s -> s.replaceAll("\"", StringUtils.EMPTY))
+                            .collect(Collectors.toList());
+                }
+        return collect;
     }
 }
