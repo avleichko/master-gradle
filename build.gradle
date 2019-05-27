@@ -1,0 +1,65 @@
+plugins {
+    id 'org.springframework.boot' version '2.1.5.RELEASE'
+    id 'java'
+}
+
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'maven'
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    maven { url "http://packages.confluent.io/maven/" }
+    maven { url "https://repo.maven.apache.org/maven2" }
+}
+
+springBoot {
+    buildInfo()
+}
+/*
+bootWar {
+    excludeDevtools = false
+}
+*/
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.boot:spring-boot-starter-aop'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-amqp'
+    implementation 'org.springframework.kafka:spring-kafka'
+    implementation 'io.micrometer:micrometer-registry-prometheus'
+    implementation 'io.springfox:springfox-swagger2:2.9.2'
+    implementation 'io.springfox:springfox-swagger-ui:2.9.2'
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    runtimeOnly 'org.springframework.boot:spring-boot-devtools'
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+    testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    compile group: 'org.apache.avro', name: 'avro', version: '1.8.2'
+    compile group: 'org.apache.avro', name: 'avro-compiler', version: '1.8.2'
+    compile group: 'org.apache.avro', name: 'avro-maven-plugin', version: '1.8.2'
+    compile group: 'com.avro.generator', name: 'avro-generator', version: '1.0'
+    compile(group: 'io.confluent', name: 'kafka-avro-serializer', version: '4.1.2') {
+        exclude(module: 'slf4j-log4j12')
+        exclude(module: 'jcl-over-slf4j')
+        exclude(module: 'log4j')
+    }
+
+// https://mvnrepository.com/artifact/pl.project13.maven/git-commit-id-plugin
+    compile group: 'pl.project13.maven', name: 'git-commit-id-plugin', version: '2.2.1'
+
+}

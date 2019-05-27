@@ -1,0 +1,22 @@
+= Master service Operation Team cook book
+
+This is an example output for a service running at http://localhost:8080/:
+
+.request
+include:::{snippets}/home/http-request.adoc[]
+
+.response
+include:::{snippets}/home/http-response.adoc[]
+
+.curl
+include:::{snippets}/home/curl-request.adoc[]
+
+.request body
+
+include:::{snippets}/home/request-body.adoc[]
+
+.responce body
+
+include:::{snippets}/homex/response-body.adoc[]
+
+this is a simple example of main endpoint for operation team
