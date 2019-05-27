@@ -1,4 +1,4 @@
-package com.adidas.services.master.services;
+package com.adidas.services.master.service;
 
 
 import com.adidas.services.master.dto.WorkerStarterDto;

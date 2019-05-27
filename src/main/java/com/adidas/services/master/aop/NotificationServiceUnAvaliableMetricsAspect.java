@@ -29,7 +29,7 @@ public class NotificationServiceUnAvaliableMetricsAspect {
     @Autowired
     MeterRegistry meterRegistry;
 
-    @AfterThrowing("execution(* com.adidas.services.master.services.KafkaConsumer.consumeError(..))")
+    @AfterThrowing("execution(* com.adidas.services.master.service.KafkaConsumer.consumeError(..))")
     public void afterMethod(JoinPoint joinPoint){
         final String arg = joinPoint.getArgs()[0].toString();
         meterRegistry.counter(ERRORS_ON_WORKERS_SIDE,  Tags.of(ERROR_DESCRIPTION, arg, TIME, new Date().toString()) ).increment(1);

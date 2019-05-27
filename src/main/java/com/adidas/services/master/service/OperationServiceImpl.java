@@ -1,4 +1,4 @@
-package com.adidas.services.master.services;
+package com.adidas.services.master.service;
 
 
 import com.adidas.product.worker.schema.WorkerLaunch;
@@ -6,14 +6,12 @@ import com.adidas.services.master.dto.Brand;
 import com.adidas.services.master.dto.MigrationFlow;
 import com.adidas.services.master.dto.MigrationType;
 import com.adidas.services.master.dto.WorkerStarterDto;
-import com.adidas.services.master.exceptions.CommonMasterServiceException;
-import com.adidas.services.master.properties.AdidasLocales;
-import com.adidas.services.master.properties.ReebokLocales;
+import com.adidas.services.master.exception.CommonMasterServiceException;
+import com.adidas.services.master.property.AdidasLocales;
+import com.adidas.services.master.property.ReebokLocales;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
-import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.messaging.support.GenericMessage;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 

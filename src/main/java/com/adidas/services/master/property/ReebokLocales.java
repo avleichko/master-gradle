@@ -1,4 +1,4 @@
-package com.adidas.services.master.properties;
+package com.adidas.services.master.property;
 
 import lombok.*;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -8,12 +8,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Component
-@ConfigurationProperties(prefix = "adidas")
+@ConfigurationProperties(prefix = "reebok")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-public class AdidasLocales {
+public class ReebokLocales {
     private Map<String, String> locales = new HashMap<>();
 }

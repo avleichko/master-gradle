@@ -1,7 +1,7 @@
-package com.adidas.services.master.controllers;
+package com.adidas.services.master.controller;
 
 import com.adidas.services.master.dto.WorkerStarterDto;
-import com.adidas.services.master.services.OperationService;
+import com.adidas.services.master.service.OperationService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

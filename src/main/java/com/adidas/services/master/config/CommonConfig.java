@@ -1,4 +1,4 @@
-package com.adidas.services.master.configs;
+package com.adidas.services.master.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

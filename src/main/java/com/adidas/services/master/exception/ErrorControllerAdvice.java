@@ -1,4 +1,4 @@
-package com.adidas.services.master.exceptions;
+package com.adidas.services.master.exception;
 
 
 import com.adidas.services.master.dto.ErrorDto;

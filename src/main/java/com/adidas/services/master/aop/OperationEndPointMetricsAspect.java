@@ -29,7 +29,7 @@ public class OperationEndPointMetricsAspect {
     @Autowired
     MeterRegistry meterRegistry;
 
-    @After("execution(* com.adidas.services.master.exceptions.ErrorControllerAdvice.*(..)))")
+    @After("execution(* com.adidas.services.master.exception.ErrorControllerAdvice.*(..)))")
     public void afterMethod(JoinPoint joinPoint){
         final String arg = joinPoint.getArgs()[0].toString();
         meterRegistry.counter(OPERATION_END_POINT_ERROR_METRICS,  Tags.of(ERROR_DESCRIPTION, arg, TIME, new Date().toString()) ).increment(1);

@@ -1,7 +1,7 @@
-package com.adidas.services.master.services;
+package com.adidas.services.master.service;
 
 
-import com.adidas.services.master.exceptions.CommonMasterServiceException;
+import com.adidas.services.master.exception.CommonMasterServiceException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

@@ -1,10 +1,10 @@
-package com.adidas.services.master.controllers;
+package com.adidas.services.master.controller;
 
 
 import com.adidas.product.worker.schema.WorkerFailure;
 import com.adidas.product.worker.schema.WorkerLaunch;
-import com.adidas.services.master.services.KafkaProducer;
-import com.adidas.services.master.services.OperationService;
+import com.adidas.services.master.service.KafkaProducer;
+import com.adidas.services.master.service.OperationService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

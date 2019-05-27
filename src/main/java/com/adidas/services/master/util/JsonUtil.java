@@ -1,6 +1,6 @@
 package com.adidas.services.master.util;
 
-import com.adidas.services.master.exceptions.CommonMasterServiceException;
+import com.adidas.services.master.exception.CommonMasterServiceException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
