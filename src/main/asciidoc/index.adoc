@@ -3,20 +3,20 @@
 This is an example output for a service running at http://localhost:8080/:
 
 .request
-include:::{snippets}/home/http-request.adoc[]
+include::{snippets}/index/http-request.adoc[]
 
 .response
-include:::{snippets}/home/http-response.adoc[]
+include::{snippets}/index/http-response.adoc[]
 
 .curl
-include:::{snippets}/home/curl-request.adoc[]
+include::{snippets}/index/curl-request.adoc[]
 
 .request body
 
-include:::{snippets}/home/request-body.adoc[]
+include::{snippets}/index/request-body.adoc[]
 
 .responce body
 
-include:::{snippets}/homex/response-body.adoc[]
+include::{snippets}/index/response-body.adoc[]
 
 this is a simple example of main endpoint for operation team

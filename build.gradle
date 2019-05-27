@@ -1,10 +1,12 @@
 plugins {
     id 'org.springframework.boot' version '2.1.5.RELEASE'
     id 'java'
+    id "org.asciidoctor.convert" version "2.2.0"
 }
 
 apply plugin: 'io.spring.dependency-management'
 apply plugin: 'maven'
+
 
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
@@ -16,7 +18,14 @@ configurations {
     }
 }
 
+asciidoctor {
+    sourceDir=file('src/main/asciidoc')
+    attributes 'snippets': file('target/snippets')
+    outputDir=file('target/snippets')
+}
+
 repositories {
+    jcenter()
     mavenLocal()
     mavenCentral()
     maven { url "http://packages.confluent.io/maven/" }
