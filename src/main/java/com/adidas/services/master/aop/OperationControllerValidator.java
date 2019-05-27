@@ -21,13 +21,19 @@ import java.util.Date;
 public class OperationControllerValidator {
 
     @Before("execution(* com.adidas.services.master.controller.OperationController.runMigration(..)))")
-    public void afterMethod(JoinPoint joinPoint){
-        WorkerStarterDto workerStarterDto =  (WorkerStarterDto)joinPoint.getArgs()[0];
-        if (!StringUtils.isEmpty(workerStarterDto.getLocale()) && workerStarterDto.getMigrationType() == MigrationType.BAZAAR_VOICE){
-            throw new MasterServiceValidationException(MigrationType.BAZAAR_VOICE + " Can not be used with not empty locale");
+    public void afterMethod(JoinPoint joinPoint) {
+        String errorMsg = "";
+
+        WorkerStarterDto workerStarterDto = (WorkerStarterDto) joinPoint.getArgs()[0];
+        if (!StringUtils.isEmpty(workerStarterDto.getLocale()) && workerStarterDto.getMigrationType() == MigrationType.BAZAAR_VOICE) {
+            errorMsg = MigrationType.BAZAAR_VOICE + " Can not be used with not empty locale";
+            log.error(errorMsg);
+            throw new MasterServiceValidationException(errorMsg);
         }
-        if (workerStarterDto.getFlow()== MigrationFlow.DELTA && (workerStarterDto.getMigrationType() == MigrationType.BAZAAR_VOICE || workerStarterDto.getMigrationType()== MigrationType.OLAPIC)){
-            throw new MasterServiceValidationException(MigrationType.BAZAAR_VOICE + " and "+ MigrationType.OLAPIC+ " Can not be used with " +MigrationFlow.DELTA);
+        if (workerStarterDto.getFlow() == MigrationFlow.DELTA && (workerStarterDto.getMigrationType() == MigrationType.BAZAAR_VOICE || workerStarterDto.getMigrationType() == MigrationType.OLAPIC)) {
+            errorMsg = MigrationType.BAZAAR_VOICE + " and " + MigrationType.OLAPIC + " Can not be used with " + MigrationFlow.DELTA;
+            log.error(errorMsg);
+            throw new MasterServiceValidationException(errorMsg);
         }
     }
 }
