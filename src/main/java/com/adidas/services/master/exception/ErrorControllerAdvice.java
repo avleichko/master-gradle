@@ -14,7 +14,7 @@ import java.util.Date;
 @Slf4j
 public class ErrorControllerAdvice {
 
-    @ExceptionHandler({ CommonMasterServiceException.class})                                                               // 400 HTTP code
+    @ExceptionHandler({ CommonMasterServiceException.class, MasterServiceValidationException.class})                                                               // 400 HTTP code
     public ResponseEntity<ErrorDto> handleRuntimeException(Exception e) {
         final ErrorDto errorDto = new ErrorDto(new Date(), e.getMessage());
         return new ResponseEntity<>(errorDto, HttpStatus.BAD_REQUEST);
