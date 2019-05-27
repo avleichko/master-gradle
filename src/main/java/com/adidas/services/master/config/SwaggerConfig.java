@@ -4,9 +4,13 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
+import springfox.documentation.service.ApiInfo;
+import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
+import java.util.Collections;
 
 @Configuration
 @EnableSwagger2
@@ -17,6 +21,19 @@ public class SwaggerConfig {
                 .select()
                 .apis(RequestHandlerSelectors.any())
                 .paths(PathSelectors.any())
-                .build();
+                .build()
+                .apiInfo(apiInfo());
     }
+
+    private ApiInfo apiInfo() {
+        return new ApiInfo(
+                "Operation team rest REST API",
+                "All public api are available under operation team section.",
+                "API TOS",
+                "Terms of service",
+                //TODO needs to add here some real information
+                 new Contact("adiPSf team ", "www.adidas.com", "adipff@adidas.com"),
+                "License of API", "API license URL", Collections.emptyList());
+    }
+
 }

@@ -12,8 +12,6 @@ import java.util.Map;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
 public class AdidasLocales {
     private Map<String, String> locales = new HashMap<>();
 }
