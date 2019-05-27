@@ -42,20 +42,6 @@ public class OperationServiceImpl implements OperationService {
         this.reebokLocales = reebokLocales;
     }
 
-//TODO leave it for time when spring cloud task will be relevant again
-/*
-    @Scheduled(cron = "${olap.full.feed.gen.schedule}")
-    @Override
-    public String launchWorker() {
-        String url = "maven://com.adidas.task:worker:0.0.1-SNAPSHOT";
-        TaskLaunchRequest taskLaunchRequest = new TaskLaunchRequest(url, null, null, null, "olapic-worker");
-
-        for (int i = 0; i < 3; i++) {
-            source.output().send(new GenericMessage<>(taskLaunchRequest));
-            log.warn("worker:" + i + " started");
-        }
-        return "success";
-    }*/
 
     @Scheduled(cron = "${olap.full.feed.gen.schedule}")
     @Override
