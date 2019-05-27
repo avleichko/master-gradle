@@ -20,7 +20,7 @@ import java.util.Date;
 @Slf4j
 public class OperationControllerValidator {
 
-    @After("execution(* com.adidas.services.master.controller.OperationController.runMigration(..)))")
+    @Before("execution(* com.adidas.services.master.controller.OperationController.runMigration(..)))")
     public void afterMethod(JoinPoint joinPoint){
         WorkerStarterDto workerStarterDto =  (WorkerStarterDto)joinPoint.getArgs()[0];
         if (!StringUtils.isEmpty(workerStarterDto.getLocale()) && workerStarterDto.getMigrationType() == MigrationType.BAZAAR_VOICE){
