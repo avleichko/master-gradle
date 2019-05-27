@@ -1,6 +1,6 @@
 = Master service Operation Team cook book
 
-This is an example output for a service running at http://localhost:8080/:
+This is an example output for a service running at http://localhost:8080/run:
 
 .request
 include::{snippets}/index/http-request.adoc[]
@@ -19,4 +19,11 @@ include::{snippets}/index/request-body.adoc[]
 
 include::{snippets}/index/response-body.adoc[]
 
-this is a simple example of main endpoint for operation team
+this is a simple example of main endpoint for operation team.
+
+.supported params
+
+This  table will give a list of supported params
+
+
+include::{snippets}/index/request-fields.adoc[]

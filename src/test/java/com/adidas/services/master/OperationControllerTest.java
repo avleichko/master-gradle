@@ -16,6 +16,8 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import static com.adidas.services.master.util.JsonUtil.objectToJson;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
+import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
+import static org.springframework.restdocs.payload.PayloadDocumentation.requestFields;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -43,7 +45,16 @@ public class OperationControllerTest {
                 .content(objectToJson(workerStarterDto)
                 ))
                 .andDo(print()).andExpect(status().isAccepted())
-                .andDo(document("index"));
+                .andDo(document("index", requestFields(
+                        fieldWithPath("locale").description("filed is used for passinf locales"),
+                        fieldWithPath("uuid").description("unique uuid"),
+                        fieldWithPath("brand").description("brand filed is used for passing brand (adidas or reebok)"),
+                        fieldWithPath("flow").description("Migration Flow: FULL or S3_SFTP"),
+                        fieldWithPath("migrationType").description(" OLAPIC,\n" +
+                                "    BAZAAR_VOICE,\n" +
+                                "    INVENTORY")
+
+                )));
     }
 
 }
